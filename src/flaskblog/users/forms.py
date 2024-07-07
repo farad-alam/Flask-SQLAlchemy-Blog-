@@ -1,0 +1,30 @@
+from flask_wtf import FlaskForm
+from flask_wtf.file import FileAllowed
+from wtforms import StringField, SubmitField, EmailField, PasswordField, FileField, BooleanField
+from wtforms.validators import DataRequired, EqualTo, Length, Email, ValidationError
+from .models import User
+
+class UserRegistrationForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    email = EmailField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField("Password", validators=[DataRequired(), Length(min=6)])
+    confirm_password = PasswordField("Confirm Password", validators=[DataRequired(), EqualTo('password')])
+    image = FileField('Profile Image (Optional)', validators=[FileAllowed(['jpg','png'])])
+    submit = SubmitField('Register')
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user:
+            raise ValidationError(f"This username '{username.data}' is already taken, please choose different one!")
+        
+    def validate_email(self, email):
+        user = User.query.filter_by(username=email.data).first()
+        if user:
+            raise ValidationError(f"This email '{email.data}' is already taken, please choose different one!")
+        
+class UserLoginForm(FlaskForm):
+    email = EmailField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField("Password", validators=[DataRequired(), Length(min=6)])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Login')
+
