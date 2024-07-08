@@ -9,7 +9,6 @@ from PIL import Image
 import os, secrets
 
 
-
 user_bp = Blueprint("user_bp", __name__)
 
 

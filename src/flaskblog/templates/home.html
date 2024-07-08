@@ -3,13 +3,18 @@
 {% block content %}
     <div class="home-div row d-flex justify-content-center">
         <div class="single-post-section col-8">
+          
+          {% for post in published_post %}
+             
             <div class="card">
-                <h5 class="card-header">This is blog post title</h5>
+                <h5 class="card-header">{{post.title}}</h5>
                 <div class="card-body">
                   <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text">{{post.content}}</p>
                 </div>
-              </div>
+            </div>
+
+            {% endfor %}
         </div>
         <div class="sidebar-section col-4">
             <div class="card" style="width: 18rem;">
