@@ -16,6 +16,8 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
     </head>
 
     <body>
@@ -23,7 +25,7 @@
             <!-- place navbar here -->
             <nav class="navbar navbar-expand-sm navbar-info bg-info">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Flask Blog</a>
+                    <a class="navbar-brand" href="{{ url_for('main_bp.home') }}">Flask Blog</a>
             
                     <div class="collapse navbar-collapse" id="collapsibleNavId">
                         <ul class="navbar-nav me-auto mt-2 mt-lg-0">
@@ -41,6 +43,9 @@
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url_for('user_bp.user_logout') }}">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('user_bp.user_account') }}">Account</a>
                                 </li>
                                
                             </ul>
@@ -91,5 +96,6 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        
     </body>
 </html>
