@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="home-div row d-flex justify-content-center">
+        <div class="single-post-section col-8">
+          
+          <div class="title-section">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="{{ url_for('static', filename='profile_pics/' + post.user.profile_pic) }}" alt="{{ post.author_name }}" class="rounded-circle" width="50" height="50">
+                    <div class="mx-2">
+                        <h6 class="mb-0">{{ post.user.username }}</h6>
+                        <small class="text-muted">{{ post.created_at.strftime('%B %d, %Y') }}</small>
+                        
+                    </div>
+                </div>
+                
+                {% if current_user.id == post.user.id %}
+                    <a href="{{ url_for('posts_bp.edit_post', post_id=post.id) }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit">Edit</i> 
+                    </a>
+                    <a href="{{ url_for('posts_bp.delete_post', post_id=post.id) }}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-remove">Delete</i> 
+                    </a>
+                {% endif %}
+                    
+
+
+                <div class="title-div">
+                    <h5 class="card-header">{{ post.title | title }}</h5>
+                </div>
+
+          </div>
+
+            <div class="thumbnail-section mt-3">
+                <img src="{{ url_for('static', filename='post_thumbnails/' + post.thumbnail) }}" alt="{{ post.title }}" width="100%" height="400">
+            </div>
+
+            <div class="content-section mt-3">
+                <p class="card-text">{{ post.content | title }}</p>
+            </div>
+          
+      
+      
+        </div>
+        <div class="sidebar-section col-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Sidebar</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">recen published post</h6>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+    

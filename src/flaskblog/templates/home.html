@@ -5,16 +5,24 @@
         <div class="single-post-section col-8">
           
           {% for post in published_post %}
-             
-            <div class="card">
-                <h5 class="card-header">{{post.title}}</h5>
+          <a href="{{url_for('posts_bp.post_details', post_id=post.id)}}">
+            <div class="card mt-3">
+                <img src="{{ url_for('static', filename='post_thumbnails/' + post.thumbnail) }}" alt="{{ post.title }}" width="100%" height="400">
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">{{post.content}}</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{{ url_for('static', filename='profile_pics/' + post.user.profile_pic) }}" alt="{{ post.author_name }}" class="rounded-circle" width="50" height="50">
+                        <div class="mx-2">
+                            <h6 class="mb-0">{{ post.user.username }}</h6>
+                            <small class="text-muted">{{ post.created_at.strftime('%B %d, %Y') }}</small>
+                        </div>
+                    </div>
+                    <h5 class="card-header">{{ post.title | title }}</h5>
+                    <p class="card-text">{{ post.content | title }}</p>
                 </div>
             </div>
-
-            {% endfor %}
+          </a>
+      {% endfor %}
+      
         </div>
         <div class="sidebar-section col-4">
             <div class="card" style="width: 18rem;">

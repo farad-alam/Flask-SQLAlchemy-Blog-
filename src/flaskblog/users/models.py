@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(25), nullable=False, unique=True)
     email = db.Column(db.String(130), nullable=False, unique=True)
     password = db.Column(db.String(70), nullable=False )
-    profile_pic = db.Column(db.String(30), nullable=True, default='default_profile.jpg')
+    profile_pic = db.Column(db.String(30), nullable=True, default='default_profile.png')
     created_at = db.Column(db.DateTime, default=datetime.now())
 
 

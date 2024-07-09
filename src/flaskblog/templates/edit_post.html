@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class='d-flex justify-content-center'>
+    <div class="container row bg-light">
+        <div class="col-8">
+            <h1 class="mt-5">Edit your post</h1>
+            <hr>
+            
+            {% if post.thumbnail %}
+                <div class="thumbnail-section mt-3">
+                    <img src="{{ url_for('static', filename='post_thumbnails/' + post.thumbnail) }}" alt="{{ post.title }}" width="100%" height="400">
+                </div>
+            {% endif %}
+                
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group mt-2">
+                {{ form.title.label(class="form-label") }}
+                {{ form.title(class="form-control") }}
+                {% for error in form.title.errors %}
+                    <div class="alert alert-danger mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group mt-2">
+                {{ form.content.label(class="form-label") }}
+                {{ form.content(class="form-control") }}
+                {% for error in form.content.errors %}
+                    <div class="alert alert-danger mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group mt-2">
+                {{ form.thumbnail.label(class="form-label") }}
+                {{ form.thumbnail(class="form-control-file") }}
+                {% for error in form.thumbnail.errors %}
+                    <div class="alert alert-danger mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group mt-2">
+                {{ form.publish_post(class="btn btn-primary") }}
+            </div>
+        </form>
+        </div>
+        <div class="col-4">
+            <h2>Sidebar Goes here</h2>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock content %}
+    
