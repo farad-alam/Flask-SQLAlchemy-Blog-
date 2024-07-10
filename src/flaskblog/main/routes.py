@@ -9,3 +9,4 @@ main_bp = Blueprint("main_bp", __name__)
 def home():
     published_post = Post.query.all()
     return render_template('home.html', title="Flask Blog - Home", published_post=published_post)
+

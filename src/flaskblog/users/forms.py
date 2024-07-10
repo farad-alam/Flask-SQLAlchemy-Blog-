@@ -48,3 +48,12 @@ class User_Account_Update_Form(FlaskForm):
         if user and user.email != current_user.email:
             raise ValidationError(f"This email '{email.data}' is already taken, please choose different one!")
 
+class Request_Password_Reset_Form(FlaskForm):
+    email = EmailField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Pssword Reset')
+
+class Password_Reset_Form(FlaskForm):
+    password = PasswordField("Password", validators=[DataRequired(), Length(min=6)])
+    confirm_password = PasswordField("Confirm Password", validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Reset Password')
+
