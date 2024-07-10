@@ -2,4 +2,4 @@ env/
 src/flaskblog/static/profile_pics/
 src/flaskblog/static/post_thumbnails/
 src/flaskblog/migrations/
-src/flaskblog/.env
+src/.env
