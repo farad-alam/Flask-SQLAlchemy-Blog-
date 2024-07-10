@@ -31,7 +31,6 @@ login_manager.login_view = "user_bp.user_login"
 login_manager.login_message_category = 'info'
 
 
-
 from flaskblog.main.routes import main_bp
 from flaskblog.users.routes import user_bp
 from flaskblog.posts.routes import posts_bp

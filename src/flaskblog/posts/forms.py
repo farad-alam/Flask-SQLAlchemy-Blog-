@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed
 from flask_ckeditor import CKEditorField
-from wtforms import StringField, TextAreaField, SubmitField, FileField
+from wtforms import StringField, SubmitField, FileField
 from wtforms.validators import DataRequired, Length
 
 
