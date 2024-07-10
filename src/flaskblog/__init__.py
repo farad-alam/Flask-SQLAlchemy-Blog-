@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_mail import Mail
 from dotenv import load_dotenv
+from flask_ckeditor import CKEditor
 import os
 
 load_dotenv()
@@ -18,10 +19,12 @@ app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
 app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS') == 'True'
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+
 mail = Mail(app)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+ckeditor = CKEditor(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = "user_bp.user_login"

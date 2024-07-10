@@ -43,12 +43,15 @@
                 {{ form.publish_post(class="btn btn-primary") }}
             </div>
         </form>
+        {{ ckeditor.load() }}
+        {{ ckeditor.config(name='content') }}
         </div>
         <div class="col-4">
             <h2>Sidebar Goes here</h2>
         </div>
         
     </div>
+    
 </div>
 
 {% endblock content %}

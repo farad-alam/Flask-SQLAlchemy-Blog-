@@ -35,6 +35,8 @@
                 {{ form.publish_post(class="btn btn-primary") }}
             </div>
         </form>
+        {{ ckeditor.load(pkg_type="full-all") }}
+        {{ ckeditor.config(name='content') }}
         </div>
         <div class="col-4">
             <h2>Sidebar Goes here</h2>

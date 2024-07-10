@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <h5 class="card-header">{{ post.title | title }}</h5>
-                    <p class="card-text">{{ post.content | title }}</p>
+                    <p class="card-text">{{ post.content[:200] | title |safe }}</p>
                 </div>
             </div>
           </a>
