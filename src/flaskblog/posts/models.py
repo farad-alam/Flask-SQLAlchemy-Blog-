@@ -4,6 +4,7 @@ from datetime import datetime
 from flaskblog.users.models import User
 
 
+
 class Post(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     title = db.Column(db.String(300), nullable=False)

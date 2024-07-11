@@ -5,7 +5,10 @@ from flask_migrate import Migrate
 from flask_mail import Mail
 from dotenv import load_dotenv
 from flask_ckeditor import CKEditor
+from flask_admin import Admin
 import os
+# from flaskblog.users.models import User
+# from flaskblog.posts.models import Post
 
 load_dotenv()
 
@@ -19,12 +22,17 @@ app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
 app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS') == 'True'
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['FLASK_ADMIN_SWATCH'] = 'darkly'
+
 
 mail = Mail(app)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 ckeditor = CKEditor(app)
+admin = Admin(app, name='FlaskBlog', template_mode='bootstrap3')
+
+
 
 login_manager = LoginManager(app)
 login_manager.login_view = "user_bp.user_login"

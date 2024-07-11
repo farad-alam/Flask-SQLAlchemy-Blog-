@@ -4,7 +4,6 @@ from datetime import datetime
 from itsdangerous.url_safe import URLSafeTimedSerializer as Serializer
 
 
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -42,3 +41,5 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"{self.username} - {self.email} - {self.created_at}"
+    
+
